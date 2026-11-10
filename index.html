@@ -6,7 +6,162 @@
     <title>Government Scholarship Portal</title>
 </head>
 
-<body>
-    
+<header>
+    <h1>Government Scholarship Portal</h1>
+    <nav>
+      <a href="#home">Home</a> |
+      <a href="#about">About</a> |
+      <a href="#scholarships">Scholarships</a> |
+      <a href="#eligibility">Eligibility</a> |
+      <a href="#apply">Apply</a> |
+      <a href="#status">Check Status</a> |
+      <a href="#contact">Contact</a>
+    </nav>
+  </header>
+
+  <hr>
+
+  <main>
+
+    <section id="home">
+      <h2>Welcome</h2>
+      <p>Apply for government scholarships and track your application in one place.</p>
+      <p><a href="#apply">Start your application</a></p>
+    </section>
+
+    <section id="about">
+      <h2>About the Program</h2>
+      <p>Write a short description of the scholarship program and its goals here.</p>
+    </section>
+
+    <section id="scholarships">
+      <h2>Available Scholarships</h2>
+      <ul>
+        <li>Merit Scholarship</li>
+        <li>Need-Based Scholarship</li>
+        <li>Minority / Special Category Scholarship</li>
+        <li>Research Scholarship</li>
+      </ul>
+    </section>
+
+    <section id="eligibility">
+      <h2>Eligibility</h2>
+      <ul>
+        <li>Must be a citizen or legal resident</li>
+        <li>Must be enrolled in a recognized institution</li>
+        <li>Minimum academic score as required</li>
+        <li>Family income within the stated limit</li>
+      </ul>
+    </section>
+
+    <section id="apply">
+      <h2>Application Form</h2>
+      <form action="#" method="post">
+
+        <p>
+          <label for="fullname">Full Name</label><br>
+          <input type="text" id="fullname" name="fullname" required>
+        </p>
+
+        <p>
+          <label for="dob">Date of Birth</label><br>
+          <input type="date" id="dob" name="dob" required>
+        </p>
+
+        <p>
+          <label for="gender">Gender</label><br>
+          <select id="gender" name="gender">
+            <option value="">Select</option>
+            <option value="female">Female</option>
+            <option value="male">Male</option>
+            <option value="other">Other</option>
+          </select>
+        </p>
+
+        <p>
+          <label for="nationalid">National ID Number</label><br>
+          <input type="text" id="nationalid" name="nationalid" required>
+        </p>
+
+        <p>
+          <label for="email">Email</label><br>
+          <input type="email" id="email" name="email" required>
+        </p>
+
+        <p>
+          <label for="phone">Phone Number</label><br>
+          <input type="tel" id="phone" name="phone">
+        </p>
+
+        <p>
+          <label for="institution">Institution Name</label><br>
+          <input type="text" id="institution" name="institution" required>
+        </p>
+
+        <p>
+          <label for="course">Course / Program</label><br>
+          <input type="text" id="course" name="course" required>
+        </p>
+
+        <p>
+          <label for="scholarship">Scholarship Type</label><br>
+          <select id="scholarship" name="scholarship" required>
+            <option value="">Select</option>
+            <option value="merit">Merit</option>
+            <option value="need">Need-Based</option>
+            <option value="special">Special Category</option>
+            <option value="research">Research</option>
+          </select>
+        </p>
+
+        <p>
+          <label for="documents">Supporting Documents</label><br>
+          <input type="file" id="documents" name="documents" multiple>
+        </p>
+
+        <p>
+          <input type="checkbox" id="declaration" name="declaration" required>
+          <label for="declaration">I declare that the information provided is true.</label>
+        </p>
+
+        <p>
+          <button type="submit">Submit Application</button>
+          <button type="reset">Clear</button>
+        </p>
+
+      </form>
+    </section>
+
+    <section id="status">
+      <h2>Check Application Status</h2>
+      <form action="#" method="post">
+        <p>
+          <label for="appid">Application ID</label><br>
+          <input type="text" id="appid" name="appid" required>
+        </p>
+        <p><button type="submit">Check Status</button></p>
+      </form>
+    </section>
+
+    <section id="contact">
+      <h2>Contact Us</h2>
+      <address>
+        Scholarship Office<br>
+        Your Address Here<br>
+        Email: <a href="mailto:info@example.gov">info@example.gov</a><br>
+        Phone: <a href="tel:+1234567890">+1 234 567 890</a>
+      </address>
+    </section>
+  </main>
+
+  <footer>
+    <p>&copy; 2026 Government Scholarship Portal. All rights reserved.</p>
+    <p>Version 1.0.0 | Last updated: 11 November 2026</p>
+    <p>
+      <a href="#">Privacy Policy</a> |
+      <a href="#">Terms of Use</a> |
+      <a href="#">Accessibility</a>
+    </p>
+  </footer>
 </body>
 </html>
