@@ -1,10 +1,314 @@
-header {
-    background-color: black;
-    text-align: center;
-    color: white;
+
+/* ===== Colors (white -> sky blue, based on the reference image) ===== */
+:root {
+  --white: #ffffff;
+  --sky-1: #e3f2fc;
+  --sky-2: #c3e4fa;
+  --sky-3: #9fd0f5;
+  --blue: #2b6cb0;
+  --navy: #12355b;
+  --text: #1d3248;
+  --muted: #4f6b86;
+  --radius: 18px;
+  --shadow: 0 6px 18px rgba(43, 108, 176, 0.14);
+  --shadow-hover: 0 16px 32px rgba(43, 108, 176, 0.28);
 }
+
+/* ===== Base ===== */
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
 body {
-    font-family: Arial, sans-serif;
-    margin: 0;
-    padding: 0;
+  margin: 0;
+  font-family: "Segoe UI", system-ui, -apple-system, Roboto, Arial, sans-serif;
+  line-height: 1.65;
+  color: var(--text);
+  /* page background: same fade as the reference, white on top to light blue */
+  background: linear-gradient(180deg, var(--white) 0%, var(--sky-1) 55%, var(--sky-2) 100%);
+  background-attachment: fixed;
+  min-height: 100vh;
+}
+
+hr {
+  display: none;
+}
+
+a {
+  color: var(--blue);
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+a:focus-visible {
+  outline: 3px solid var(--sky-3);
+  outline-offset: 3px;
+  border-radius: 4px;
+}
+
+/* ===== Header / Nav ===== */
+header {
+  padding: 2.5rem 1.5rem 1.5rem;
+  text-align: center;
+}
+
+header h1 {
+  margin: 0 0 0.75rem;
+  font-size: clamp(1.8rem, 5vw, 2.8rem);
+  color: var(--navy);
+  letter-spacing: -0.02em;
+}
+
+nav {
+  display: inline-flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0.4rem;
+  padding: 0.4rem;
+  background: rgba(255, 255, 255, 0.7);
+  border: 1px solid var(--sky-2);
+  border-radius: 999px;
+  color: transparent; /* hides the "|" separators in the HTML */
+  font-size: 0;
+}
+
+nav a {
+  font-size: 1rem;
+  padding: 0.45rem 1.2rem;
+  border-radius: 999px;
+  font-weight: 600;
+  color: var(--navy);
+  transition: background 0.25s ease, color 0.25s ease, transform 0.25s ease;
+}
+
+/* ===== Main layout ===== */
+main {
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 1rem 1.5rem 3rem;
+}
+
+main > section {
+  margin-bottom: 2.5rem;
+}
+
+main h1 {
+  margin: 3rem 0 1.25rem;
+  font-size: clamp(1.5rem, 4vw, 2.1rem);
+  color: var(--navy);
+  text-align: center;
+}
+
+main h2 {
+  margin: 0 0 0.6rem;
+  font-size: 1.35rem;
+  color: var(--navy);
+  transition: color 0.25s ease;
+}
+
+main p {
+  margin: 0 0 0.8rem;
+}
+
+/* ===== Home ===== */
+#home {
+  text-align: center;
+  padding: 2.5rem 1.5rem;
+  background: linear-gradient(180deg, var(--white) 0%, var(--sky-2) 100%);
+  border: 1px solid var(--sky-2);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+}
+
+#home p a {
+  display: inline-block;
+  margin-top: 0.4rem;
+  padding: 0.7rem 1.8rem;
+  background: var(--blue);
+  color: var(--white);
+  font-weight: 600;
+  border-radius: 999px;
+  transition: background 0.25s ease, transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+/* ===== About ===== */
+#about {
+  padding: 0 0.5rem;
+}
+
+/* ===== Scholarship boxes (white fading to blue) ===== */
+#scholarships ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 1rem;
+}
+
+#scholarships li,
+.card {
+  background: linear-gradient(180deg, var(--white) 0%, var(--sky-1) 45%, var(--sky-3) 100%);
+  /* taller than the box so the fade can slide on hover */
+  background-size: 100% 170%;
+  background-position: top;
+  border: 1px solid var(--sky-2);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  cursor: pointer;
+  transition:
+    transform 0.3s ease,
+    box-shadow 0.3s ease,
+    background-position 0.45s ease,
+    border-color 0.3s ease;
+}
+
+#scholarships li {
+  padding: 1.4rem 1.2rem;
+  min-height: 110px;
+  display: flex;
+  align-items: flex-end; /* text sits in the bluer part of the fade */
+  font-weight: 600;
+  color: var(--navy);
+}
+
+.cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 1.25rem;
+}
+
+.card {
+  padding: 1.5rem 1.4rem 1.6rem;
+  display: flex;
+  flex-direction: column;
+}
+
+.card h2 {
+  padding-bottom: 0.5rem;
+  margin-bottom: 0.7rem;
+  border-bottom: 2px solid rgba(43, 108, 176, 0.25);
+  transition: border-color 0.3s ease, color 0.25s ease;
+}
+
+.card p {
+  margin: 0;
+  color: var(--text);
+}
+
+/* ===== Hover effects ===== */
+
+/* Boxes: lift up, deeper shadow, blue fade slides up, border turns blue */
+#scholarships li:hover,
+.card:hover {
+  transform: translateY(-6px) scale(1.02);
+  box-shadow: var(--shadow-hover);
+  background-position: bottom;
+  border-color: var(--blue);
+}
+
+/* Card title turns blue and the underline gets stronger */
+.card:hover h2 {
+  color: var(--blue);
+  border-bottom-color: var(--blue);
+}
+
+/* Pressed feeling when clicking */
+#scholarships li:active,
+.card:active {
+  transform: translateY(-2px) scale(1.01);
+}
+
+/* Nav links: fill with blue */
+nav a:hover {
+  background: var(--blue);
+  color: var(--white);
+  text-decoration: none;
+  transform: translateY(-1px);
+}
+
+/* Start button: darker, lifts, glows */
+#home p a:hover {
+  background: var(--navy);
+  text-decoration: none;
+  transform: translateY(-2px);
+  box-shadow: 0 8px 18px rgba(18, 53, 91, 0.35);
+}
+
+/* Footer links */
+footer a {
+  transition: color 0.2s ease;
+}
+
+footer a:hover {
+  color: var(--white);
+  text-decoration: underline;
+}
+
+/* ===== Footer ===== */
+footer {
+  padding: 2rem 1.5rem;
+  text-align: center;
+  background: var(--navy);
+  color: #d6e7f7;
+  font-size: 0.92rem;
+}
+
+footer p {
+  margin: 0.3rem 0;
+}
+
+footer a {
+  color: var(--sky-2);
+}
+
+/* ===== Mobile ===== */
+@media (max-width: 600px) {
+  header {
+    padding-top: 1.75rem;
+  }
+
+  main {
+    padding: 0.5rem 1rem 2rem;
+  }
+
+  .cards {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* Touch screens have no hover, so skip the movement there */
+@media (hover: none) {
+  #scholarships li:hover,
+  .card:hover {
+    transform: none;
+  }
+}
+
+/* ===== Reduced motion ===== */
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  #scholarships li,
+  .card,
+  nav a,
+  #home p a {
+    transition: none;
+  }
+
+  #scholarships li:hover,
+  .card:hover,
+  nav a:hover,
+  #home p a:hover {
+    transform: none;
+  }
 }
