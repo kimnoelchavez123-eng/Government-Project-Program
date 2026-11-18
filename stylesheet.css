@@ -368,6 +368,7 @@ footer a {
   #home p a::after {
     transition: none;
   }
+
   html {
     scroll-behavior: auto;
   }
@@ -385,13 +386,63 @@ footer a {
   #home p a:hover {
     transform: none;
   }
+}
 
-  #scholarships h2 {
-    text-align: center;
+/* ===== Center the scholarships section ===== */
+#scholarships h2 {
+  text-align: center;
+}
+
+#scholarships li {
+  justify-content: center;
+  text-align: center;
+}
+
+/* ===== Logo behind each card ===== */
+.card {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+}
+
+.card::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: auto 85%;
+  opacity: 0.18;
+  mix-blend-mode: multiply;
+  pointer-events: none;
+  transition:
+    opacity 0.3s ease,
+    transform 0.45s ease;
+}
+.card:hover::before {
+  opacity: 0.3;
+  transform: scale(1.08);
+}
+
+.card-dost::before {
+  background-image: url("images/DOST-1-825x550.jpg");
+}
+.card-ched::before {
+  background-image: url("images/CHED_Logo_New_20210406_RGB_border.png");
+}
+.card-cebu::before {
+  background-image: url("images/cebu_city_logo.jpg");
+}
+.card-tesda::before {
+  background-image: url("images/TESDA_OFFICIAL_LOGO.jpg");
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .card::before {
+    transition: none;
   }
-
-  #scholarships li {
-    justify-content: center;
-    text-align: center;
+  .card:hover::before {
+    transform: none;
   }
 }
