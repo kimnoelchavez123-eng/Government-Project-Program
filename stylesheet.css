@@ -1,4 +1,3 @@
-
 /* ===== Colors (white -> sky blue, based on the reference image) ===== */
 :root {
   --white: #ffffff;
@@ -25,11 +24,22 @@ html {
 
 body {
   margin: 0;
-  font-family: "Segoe UI", system-ui, -apple-system, Roboto, Arial, sans-serif;
+  font-family:
+    "Segoe UI",
+    system-ui,
+    -apple-system,
+    Roboto,
+    Arial,
+    sans-serif;
   line-height: 1.65;
   color: var(--text);
   /* page background: same fade as the reference, white on top to light blue */
-  background: linear-gradient(180deg, var(--white) 0%, var(--sky-1) 55%, var(--sky-2) 100%);
+  background: linear-gradient(
+    180deg,
+    var(--white) 0%,
+    var(--sky-1) 55%,
+    var(--sky-2) 100%
+  );
   background-attachment: fixed;
   min-height: 100vh;
 }
@@ -80,12 +90,34 @@ nav {
 }
 
 nav a {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
   font-size: 1rem;
   padding: 0.45rem 1.2rem;
   border-radius: 999px;
   font-weight: 600;
   color: var(--navy);
-  transition: background 0.25s ease, color 0.25s ease, transform 0.25s ease;
+  transition: color 0.25s ease 0.1s;
+}
+
+nav a::before,
+nav a::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 0%;
+  background: var(--blue);
+  z-index: -1;
+  transition: width 0.35s ease;
+}
+
+nav a::before {
+  left: 0;
+}
+nav a::after {
+  right: 0;
 }
 
 /* ===== Main layout ===== */
@@ -128,6 +160,9 @@ main p {
 }
 
 #home p a {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
   display: inline-block;
   margin-top: 0.4rem;
   padding: 0.7rem 1.8rem;
@@ -135,14 +170,34 @@ main p {
   color: var(--white);
   font-weight: 600;
   border-radius: 999px;
-  transition: background 0.25s ease, transform 0.25s ease, box-shadow 0.25s ease;
+  transition:
+    transform 0.25s ease,
+    box-shadow 0.25s ease;
+}
+
+#home p a::before,
+#home p a::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 0%;
+  background: var(--navy);
+  z-index: -1;
+  transition: width 0.35s ease;
+}
+
+#home p a::before {
+  left: 0;
+}
+#home p a::after {
+  right: 0;
 }
 
 /* ===== About ===== */
 #about {
-  padding: 0 0.5rem;
+  text-align: center;
 }
-
 /* ===== Scholarship boxes (white fading to blue) ===== */
 #scholarships ul {
   list-style: none;
@@ -155,7 +210,12 @@ main p {
 
 #scholarships li,
 .card {
-  background: linear-gradient(180deg, var(--white) 0%, var(--sky-1) 45%, var(--sky-3) 100%);
+  background: linear-gradient(
+    180deg,
+    var(--white) 0%,
+    var(--sky-1) 45%,
+    var(--sky-3) 100%
+  );
   /* taller than the box so the fade can slide on hover */
   background-size: 100% 170%;
   background-position: top;
@@ -195,7 +255,9 @@ main p {
   padding-bottom: 0.5rem;
   margin-bottom: 0.7rem;
   border-bottom: 2px solid rgba(43, 108, 176, 0.25);
-  transition: border-color 0.3s ease, color 0.25s ease;
+  transition:
+    border-color 0.3s ease,
+    color 0.25s ease;
 }
 
 .card p {
@@ -226,22 +288,28 @@ main p {
   transform: translateY(-2px) scale(1.01);
 }
 
-/* Nav links: fill with blue */
+/* Nav links: split doors */
 nav a:hover {
-  background: var(--blue);
   color: var(--white);
   text-decoration: none;
-  transform: translateY(-1px);
 }
 
-/* Start button: darker, lifts, glows */
+nav a:hover::before,
+nav a:hover::after {
+  width: 50%;
+}
+
+/* Start button: split doors */
 #home p a:hover {
-  background: var(--navy);
   text-decoration: none;
   transform: translateY(-2px);
   box-shadow: 0 8px 18px rgba(18, 53, 91, 0.35);
 }
 
+#home p a:hover::before,
+#home p a:hover::after {
+  width: 50%;
+}
 /* Footer links */
 footer a {
   transition: color 0.2s ease;
@@ -294,6 +362,12 @@ footer a {
 
 /* ===== Reduced motion ===== */
 @media (prefers-reduced-motion: reduce) {
+  nav a::before,
+  nav a::after,
+  #home p a::before,
+  #home p a::after {
+    transition: none;
+  }
   html {
     scroll-behavior: auto;
   }
@@ -310,5 +384,14 @@ footer a {
   nav a:hover,
   #home p a:hover {
     transform: none;
+  }
+
+  #scholarships h2 {
+    text-align: center;
+  }
+
+  #scholarships li {
+    justify-content: center;
+    text-align: center;
   }
 }
